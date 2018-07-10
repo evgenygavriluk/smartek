@@ -1,0 +1,77 @@
+/* main.css */
+
+html, body {
+    height: 100%;
+}
+
+header{
+    height: 80px;
+    background-color: dodgerblue;
+    color: white;
+    margin-bottom: 80px;
+}
+
+footer{
+    height: 40px;
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    background-color: dodgerblue;
+    color: white;
+}
+
+section{
+    margin-bottom: 30px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.commentary{
+    margin-top: 20px;
+}
+
+.bg-book-image{
+    max-width: 400px;
+}
+
+.error{
+    display: none;
+    background-color: red;
+    border: 1px solid red;
+    height: 30px;
+    width: 100%;
+    border-radius: 3px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.card-img-top{
+    max-height: 220px;
+}
+
+i{
+    margin-right: 20px;
+}
+
+#sort_form{
+    display: block;
+}
+
+.auth-form{
+    border: 1px solid lightslategray;
+    border-radius: 5px;
+    padding: 15px;
+}

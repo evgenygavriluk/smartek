@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Database\Seeder;
+
+class BookauthorTableSeeder extends Seeder
+{
+    public $bookauthors = array(
+        [1,	1,	1],
+        [2,	2,	2],
+        [3,	3,	3],
+        [4,	4,	4],
+        [5,	5,	5],
+        [6,	1,	5],
+        [7,	6,	6],
+        [8,	6,	7],
+        [9,	7,	8],
+        [10,8,	9],
+        [11,9, 10],
+        [12,10,11]
+    );
+
+    public function run()
+    {
+        DB::table('bookauthor')->delete();
+
+        foreach($this->bookauthors as $bookauthor) {
+
+            DB::table('bookauthor')->insert([
+                'id'       => $bookauthor[0],
+                'bookid'   => $bookauthor[1],
+                'authorid' => $bookauthor[2],
+            ]);
+        }
+    }
+}
