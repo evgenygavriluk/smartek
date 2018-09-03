@@ -21,8 +21,8 @@ class CommentsTableSeeder extends Seeder
         foreach($this->comments as $comment) {
 
             DB::table('comments')->insert([
-                'commentid'       => $comment[0],
-                'bookid'          => $comment[1],
+                'id'              => $comment[0],
+                'book_id'          => $comment[1],
                 'commenttext'     => $comment[2],
                 'commentraiting'  => $comment[3],
                 'commentatorname' => $comment[4]]);

@@ -7,22 +7,8 @@
         <th data-field="year" data-filter-control="select" data-sortable="true">Год</th>
         <th data-field="year" data-filter-control="select" data-sortable="true">Жанр</th>
         <th data-field="score" data-filter-control="select" data-sortable="true">
-            <form id="sort_form" name="sort_form" action="" method="get">
-                <?php if(isset($_GET['page'])): ?>
-                <input type="hidden" name="page" value="<?=(isset($_GET['page']))? $_GET['page']: '';?>">
-                <?php endif; ?>
-                <?php if(isset($_GET['bibliotekaid'])): ?>
-                <input type="hidden" name="bibliotekaid" value="<?=$_GET['bibliotekaid'];?>">
-                <?php endif;?>
-                <?php if(isset($_GET['author'])): ?>
-                <input type="hidden" name="author" value="<?=(isset($_GET['author']))? $_GET['author']:'';?>">
-                <?php endif;?>
-
-
-                <label for="sort_type" id="sort"><i class="fa fa-sort"></i>Рейтинг</label>
-                <input id="sort_type" name="sort_type" type="hidden" value="<?=(isset($_GET['sort_type']))? $_GET['sort_type']: 0;?>">
-            </form>
-
+            <label for="sort_type" id="sort"><i class="fa fa-sort"></i>Рейтинг</label>
+            <input id="sort_type" name="sort_type" type="hidden" value="{{$sortRule}}" onchange='location=value'>
         </th>
     </tr>
     </thead>
@@ -35,11 +21,11 @@
             </td>
             <td>
                 @foreach($book['bookauthors'] as $author)
-                    <a href="author.php?authorid={{$author['authorid']}}">{{$author['authorname']}}</a>&nbsp
+                    <a href="{{route('author/authorid', $author['authorid'])}}">{{$author['authorname']}}</a>&nbsp
                 @endforeach
             </td>
             <td>
-                <a href="book.php?bookid={{$book['bookid']}}">{{$book['bookname']}}</a>
+                <a href="{{route('book/bookid', $book['bookid'])}}">{{$book['bookname']}}</a>
             </td>
             <td>
                 {{$book['bookpublicyear']}}
@@ -57,34 +43,41 @@
 </table>
 <nav aria-label="books">
     <ul class="pagination justify-content-center">
-        <?php
-        $href='';
-        if($_SERVER['SCRIPT_NAME']=='/biblioteka.php'){
-            $params = explode('&', $_SERVER['QUERY_STRING']);
 
-            $href = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'].'?'.$params[0].'&page=';
-        }
-        if($_SERVER['SCRIPT_NAME']=='/book.php'){
-            $href = '?page=';
-        }
-        if(isset($_GET['sort_type'])) {
-            $sort = '&sort_type='.$_GET['sort_type'];
-        }
-        else $sort='';
+        @if(isset($id))
+            @if($currentPage > $firstPage)
+                <li class="page-item"><a class="page-link" href="{{route($href, ['id'=>$id, 'authorid'=>$authorid, 'pageid'=>($currentPage-1), 'sortRule'=>$sortRule])}}">Предыдущая</a></li>
+            @endif
 
-        if ($currentPage > $firstPage){
-            echo '<li class="page-item"><a class="page-link" href="'.$href, ($currentPage-1), $sort.'">Предыдущая</a></li>';
-        }
+            @for($i=$firstPage; $i<=$allPages; $i++)
+                @if($i==$currentPage)
+                    <li class="page-item active"><a class="page-link" href="{{route($href, ['id'=>$id, 'authorid'=>$authorid, 'pageid'=>$i, 'sortRule'=>$sortRule])}}">{{$i}}</a></li>
+                @else
+                    <li class="page-item"><a class="page-link" href="{{route($href, ['id'=>$id, 'authorid'=>$authorid, 'pageid'=>$i, 'sortRule'=>$sortRule])}}">{{$i}}</a></li>
+                @endif
+            @endfor
 
-        for($i=$firstPage; $i<=$allPages; $i++){
-            $active='';
-            if($i==$currentPage) $active ='active';
-            echo '<li class="page-item '.$active.'"><a class="page-link" href="'.$href, $i, $sort.'">'.$i.'</a></li>';
-        }
-        if(($currentPage)<$allPages) {
-            echo '<li class="page-item"><a class="page-link" href="'.$href, ($currentPage + 1), $sort .'">Следующая</a></li>';
-        }
+            @if(($currentPage)<$allPages)
+                <li class="page-item"><a class="page-link" href="{{route($href, ['id'=>$id, 'authorid'=>$authorid, 'pageid'=>($currentPage + 1), 'sortRule'=>$sortRule])}}">Следующая</a></li>
+            @endif
+        @else
 
-        ?>
+            @if($currentPage > $firstPage)
+                <li class="page-item"><a class="page-link" href="{{route($href, ['authorid'=>$authorid, 'pageid'=>($currentPage-1), 'sortRule'=>$sortRule])}}">Предыдущая</a></li>
+            @endif
+
+            @for($i=$firstPage; $i<=$allPages; $i++)
+                @if($i==$currentPage)
+                        <li class="page-item active"><a class="page-link" href="{{route($href, ['authorid'=>$authorid, 'pageid'=>$i, 'sortRule'=>$sortRule])}}">{{$i}}</a></li>
+                @else
+                        <li class="page-item"><a class="page-link" href="{{route($href, ['authorid'=>$authorid, 'pageid'=>$i, 'sortRule'=>$sortRule])}}">{{$i}}</a></li>
+                @endif
+            @endfor
+
+            @if(($currentPage)<$allPages)
+                <li class="page-item"><a class="page-link" href="{{route($href, ['authorid'=>$authorid, 'pageid'=>($currentPage + 1), 'sortRule'=>$sortRule])}}">Следующая</a></li>
+            @endif
+
+        @endif
     </ul>
 </nav>

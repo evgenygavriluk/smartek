@@ -2,50 +2,54 @@
 
 namespace App\Http\Controllers;
 
-use App\Biblioteka;
-use App\Author;
+use App\biblioglobus\Biblioteks;
+use App\biblioglobus\Authors;
 use Illuminate\Http\Request;
 
 class BibliotekaController extends Controller
 {
     public function index(){
         $h1 = 'Библиотеки объединения "Библиоглобус"';
-        $biblioteks = Biblioteka::showBibliotekaList();
+        $biblioteks = Biblioteks::getBibliotekaList();
         return view('biblioteka',['h1'=>$h1, 'biblioteks'=>$biblioteks]);
 
     }
 
-    public function element($bibliotekaid){
+    public function element($bibliotekaid, $authorid=0, $pageid=0, $sortRule=0){
 
-        $h1 = Biblioteka::getBibliotekaName($bibliotekaid);
-        $adress = Biblioteka::getBibliotekaAdress($bibliotekaid);
-        $authors = Author::getAuthors($bibliotekaid);
+        $h1 = Biblioteks::getBibliotekaName($bibliotekaid);
+        $adress = Biblioteks::getBibliotekaAdress($bibliotekaid);
+        $authors = Authors::getAuthors($bibliotekaid);
+        $href= 'biblPageAuthor/sortrule';
 
         $elementsPerPage = 2;
-        if(!isset($_GET['page'])){
+        if($pageid==0){
             $firstPage = 1;
             $currentPage = 1;
         } else {
             $firstPage = 1;
-            $currentPage = $_GET['page'];
+            $currentPage = $pageid;
         }
-        if(!isset($_GET['author'])){
-            $authorid = 0;
-        } else {
-            $authorid = (int)$_GET['author'];
-        }
-        if(isset($_GET['sort_type'])) $sortRule = $_GET['sort_type'];
-        else $sortRule = 0;
 
-        if ((int)(Biblioteka::getBibliotekaBookCnt($bibliotekaid, $authorid)%$elementsPerPage) ==0) $allPages = (int)(Biblioteka::getBibliotekaBookCnt($bibliotekaid,$authorid)/$elementsPerPage);
-        else $allPages = (int)(Biblioteka::getBibliotekaBookCnt($bibliotekaid,$authorid)/$elementsPerPage)+1;
+        if ((int)(Biblioteks::getBibliotekaBookCnt($bibliotekaid, $authorid)%$elementsPerPage) ==0) $allPages = (int)(Biblioteks::getBibliotekaBookCnt($bibliotekaid,$authorid)/$elementsPerPage);
+        else $allPages = (int)(Biblioteks::getBibliotekaBookCnt($bibliotekaid,$authorid)/$elementsPerPage)+1;
 
         if ($currentPage<1 || $currentPage>$allPages) $currentPage = 1;
-        $books = Biblioteka::getContainBooks($bibliotekaid, $currentPage, $elementsPerPage, $authorid, $sortRule);
-        return view('biblioteka-element',['h1'=>$h1, 'books'=>$books, 'adress'=>$adress, 'authors'=>$authors, 'currentPage'=>$currentPage, 'firstPage'=>$firstPage, 'allPages'=>$allPages]);
+        $books = Biblioteks::getContainBooks($bibliotekaid, $currentPage, $elementsPerPage, $authorid, $sortRule);
+
+        return view('biblioteka-element',['h1'=>$h1,
+                                          'books'=>$books,
+                                          'adress'=>$adress,
+                                          'authors'=>$authors,
+                                          'currentPage'=>$currentPage,
+                                          'firstPage'=>$firstPage,
+                                          'allPages'=>$allPages,
+                                          'id'=>$bibliotekaid,
+                                          'href'=>$href,
+                                          'authorid'=>$authorid,
+                                          'sortRule'=>$sortRule]);
     }
 }
-
 
 
 

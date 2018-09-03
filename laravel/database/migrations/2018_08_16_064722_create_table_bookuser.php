@@ -14,7 +14,7 @@ class CreateTableBookuser extends Migration
     public function up()
     {
         Schema::create('bookuser',function(Blueprint $table){
-            $table->increments('userid');
+            $table->increments('id');
             $table->string('useremail', 70);
             $table->string('userpassword', 32);
             $table->string('userfirstname', 30);

@@ -7,29 +7,19 @@
                 <h1>
                     <?=$h1;?>
                 </h1>
-                <?=$adress; ?>
+                <?=$adress; ?><br />
 
-                <form name="author" action="" method="get">
-                    <?php if(isset($_GET['bibliotekaid'])): ?>
-                    <input type="hidden" name="bibliotekaid" value="<?=$_GET['bibliotekaid'];?>">
-                    <?php endif;?>
-                    <?php if(isset($_GET['page'])): ?>
-                    <input type="hidden" name="page" value="<?=(isset($_GET['page']))? $_GET['page']:'';?>">
-                    <?php endif;?>
+                    <select id="authorid" name="authorid" onchange='location=value'>
+                        <option value="{{route('biblPageAuthor/authorid',['bibliotekaid'=>$id, 'authorid'=>0, 'pageid'=>$currentPage ])}}">Все авторы</option>
 
-
-                    <select id="author" name="author" onchange='this.form.submit();'>
-                        <option value="0">Все авторы</option>
-                        <?php
-                        foreach($authors as $elements){
-                            $selected='';
-                            if(isset($_GET['author']) and $elements['authorid']==$_GET['author']) $selected = 'selected';
-                            echo '<option value="' . $elements['authorid'] . '" '.$selected.'>' . $elements['authorname'] . '</option>';
-                        }
-                        ?>
-
+                        @foreach($authors as $a)
+                            @if($a['authorid']==$authorid)
+                                <option value="{{route('biblPageAuthor/authorid',['bibliotekaid'=>$id, 'authorid'=>$a['authorid'], 'pageid'=>$currentPage ])}}" selected>{{$a['authorname']}}</option>
+                            @else
+                                <option value="{{route('biblPageAuthor/authorid',['bibliotekaid'=>$id, 'authorid'=>$a['authorid'], 'pageid'=>$currentPage ])}}">{{$a['authorname']}}</option>
+                            @endif
+                        @endforeach
                     </select>
-                </form>
 
                 @include('booktable')
             </div>
@@ -41,9 +31,12 @@
 @include('footer')
 <script>
     $("#sort").click(function() {
-        if($("#sort_type").val() == 0) $("#sort_type").val(1);
-        else $("#sort_type").val(0);
-        $("#sort_form").submit();
+        if($("#sort_type").val() == 0){
+            window.location = '{{route('biblPageAuthor/sortrule',['bibliotekaid'=>$id, 'authorid'=>$authorid, 'pageid'=>$currentPage, 'sortRule'=>1])}}';
+        }
+        else {
+            window.location = '{{route('biblPageAuthor/sortrule',['bibliotekaid'=>$id, 'authorid'=>$authorid, 'pageid'=>$currentPage, 'sortRule'=>0])}}';
+        }
         console.log($("#sort_type").val());
     });
 </script>

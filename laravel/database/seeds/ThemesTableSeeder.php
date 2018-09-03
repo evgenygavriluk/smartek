@@ -14,14 +14,15 @@ class ThemesTableSeeder extends Seeder
 
     public function run()
     {
-        DB::table('themes')->delete();
+        DB::table('themas')->delete();
 
 
         foreach ($this->themes as $thema) {
 
-            DB::table('themes')->insert(['themaid'   => $thema[0],
-                                          'themaname' => $thema[1]
-                                         ]);
+            DB::table('themas')->insert([
+                        'id'   => $thema[0],
+                        'themaname' => $thema[1]
+                        ]);
         }
     }
 }

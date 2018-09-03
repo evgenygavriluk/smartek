@@ -18,7 +18,7 @@ class BookuserTableSeeder extends Seeder
         foreach($this->bookusers as $bookuser) {
 
             DB::table('bookuser')->insert([
-                'userid'           => $bookuser[0],
+                'id'               => $bookuser[0],
                 'useremail'        => $bookuser[1],
                 'userpassword'     => $bookuser[2],
                 'userfirstname'    => $bookuser[3],

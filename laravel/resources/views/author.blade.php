@@ -23,33 +23,35 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <?=isset($authors)? $authors:''; ?>
+                    @foreach($authors as $author)
+                        <tr>
+                            <td>
+                                <a href="{{route('author/authorid', $author['authorid'])}}">{{$author['authorname']}}</a>
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
                 <nav aria-label="books">
                     <ul class="pagination justify-content-center">
-                        <?php
-                        $href='/author/';
-                        if($_SERVER['SCRIPT_NAME']=='/author.php'){
-                            $href = '?page=';
-                        }
-                        if(isset($_GET['sort_type'])) $st='&sort_type='.$_GET['sort_type'];
-                        else $st="";
 
-                        if ($currentPage > $firstPage){
-                            echo '<li class="page-item"><a class="page-link" href="'.$href, ($currentPage-1),$st.'">Предыдущая</a></li>';
-                        }
+                        @if ($currentPage > $firstPage)
+                            <li class="page-item"><a class="page-link" href="{{route($href, ($currentPage-1))}}">Предыдущая</a></li>
+                        @endif
 
-                        for($i=$firstPage; $i<=$allPages; $i++){
-                            $active='';
-                            if($i==$currentPage) $active ='active';
-                            echo '<li class="page-item '.$active.'"><a class="page-link" href="'.$href, $i, $st.'">'.$i.'</a></li>';
-                        }
-                        if(($currentPage)<$allPages) {
-                            echo '<li class="page-item"><a class="page-link" href="'.$href, ($currentPage + 1), $st.'">Следующая</a></li>';
-                        }
+                        @for($i=$firstPage; $i<=$allPages; $i++)
+                            @if($i==$currentPage)
+                                <li class="page-item active"><a class="page-link" href="{{route($href, $i)}}">{{$i}}</a></li>
+                            @else
+                                <li class="page-item"><a class="page-link" href="{{route($href, $i)}}">{{$i}}</a></li>
+                            @endif
+                        @endfor
 
-                        ?>
+                        @if(($currentPage)<$allPages)
+                            <li class="page-item"><a class="page-link" href="{{route($href, ($currentPage + 1))}}">Следующая</a></li>
+                        @endif
+
+
                     </ul>
                 </nav>
             </div>
@@ -68,3 +70,28 @@
         console.log($("#sort_type").val());
     });
 </script>
+
+
+
+<?php
+/*
+if($_SERVER['SCRIPT_NAME']=='/author.php'){
+    $href = '?page=';
+}
+if(isset($_GET['sort_type'])) $st='&sort_type='.$_GET['sort_type'];
+else $st="";
+
+if ($currentPage > $firstPage){
+    echo '<li class="page-item"><a class="page-link" href="'.$href, ($currentPage-1),$st.'">Предыдущая</a></li>';
+}
+
+for($i=$firstPage; $i<=$allPages; $i++){
+    $active='';
+    if($i==$currentPage) $active ='active';
+    echo '<li class="page-item '.$active.'"><a class="page-link" href="'.$href, $i, $st.'">'.$i.'</a></li>';
+}
+if(($currentPage)<$allPages) {
+    echo '<li class="page-item"><a class="page-link" href="'.$href, ($currentPage + 1), $st.'">Следующая</a></li>';
+}
+
+?>

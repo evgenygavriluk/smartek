@@ -10,7 +10,7 @@ class CreateTableBiblioteks extends Migration
     public function up()
     {
         Schema::create('biblioteks',function(Blueprint $table){
-            $table->increments('bibliotekaid');
+            $table->increments('id')->unsigned();
             $table->string('bibliotekatitle', 30);
             $table->string('bibliotekaadress', 100);
         });

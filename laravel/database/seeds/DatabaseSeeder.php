@@ -14,21 +14,24 @@ class DatabaseSeeder extends Seeder
 
         $this->call('AuthorsTableSeeder');
 
-        $this->call('BibliotekabookTableSeeder');
-
         $this->call('BiblioteksTableSeeder');
 
-        $this->call('BookauthorTableSeeder');
-
         $this->call('BooksTableSeeder');
-
-        $this->call('BookthemaTableSeeder');
 
         $this->call('BookuserTableSeeder');
 
         $this->call('CommentsTableSeeder');
 
         $this->call('ThemesTableSeeder');
+
+
+
+
+        $this->call('BibliotekabookTableSeeder');
+
+        $this->call('BookauthorTableSeeder');
+
+        $this->call('BookthemaTableSeeder');
 
     }
 }

@@ -16,14 +16,14 @@ class BookthemaTableSeeder extends Seeder
 
     public function run()
     {
-        DB::table('bookthema')->delete();
+        DB::table('book_thema')->delete();
 
         foreach($this->bookthemas as $bookthema) {
 
-            DB::table('bookthema')->insert([
+            DB::table('book_thema')->insert([
                 'id'       => $bookthema[0],
-                'bookid'   => $bookthema[1],
-                'themaid' => $bookthema[2],
+                'book_id'  => $bookthema[1],
+                'thema_id' => $bookthema[2],
             ]);
         }
     }

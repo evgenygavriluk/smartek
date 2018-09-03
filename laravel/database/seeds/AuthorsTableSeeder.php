@@ -24,7 +24,7 @@ class AuthorsTableSeeder extends Seeder
         foreach($this->authors as $author) {
 
             DB::table('authors')->insert([
-                'authorid'    => $author[0],
+                'id'          => $author[0],
                 'authorname'  => $author[1],
                 'authorimage' => $author[2],
             ]);

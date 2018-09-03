@@ -24,7 +24,7 @@ class BooksTableSeeder extends Seeder
         foreach($this->books as $book) {
 
             DB::table('books')->insert([
-                'bookid'          => $book[0],
+                'id'              => $book[0],
                 'bookname'        => $book[1],
                 'bookpublicyear'  => $book[2],
                 'bookpages'       => $book[3],

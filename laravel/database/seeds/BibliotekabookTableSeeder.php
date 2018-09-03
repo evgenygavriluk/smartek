@@ -20,16 +20,16 @@ class BibliotekabookTableSeeder extends Seeder
 
     public function run()
     {
-        DB::table('bibliotekabook')->delete();
+        DB::table('biblioteka_book')->delete();
 
 
         foreach ($this->biblioteka_books as $biblioteka_book) {
 
-            DB::table('bibliotekabook')->insert(
+            DB::table('biblioteka_book')->insert(
                 [
                     'id'            => $biblioteka_book[0],
-                    'bibliotekaid'  => $biblioteka_book[1],
-                    'bookid'        => $biblioteka_book[2],
+                    'biblioteka_id'  => $biblioteka_book[1],
+                    'book_id'        => $biblioteka_book[2],
                 ]);
         }
     }

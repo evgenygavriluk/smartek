@@ -9,8 +9,8 @@ class CreateTableThemes extends Migration
 
     public function up()
     {
-        Schema::create('themes',function(Blueprint $table){
-            $table->increments('themaid');
+        Schema::create('themas',function(Blueprint $table){
+            $table->increments('id')->unsigned();
             $table->string('themaname', 30);
         });
     }
@@ -18,6 +18,6 @@ class CreateTableThemes extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('themes');
+        Schema::dropIfExists('themas');
     }
 }

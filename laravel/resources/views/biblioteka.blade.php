@@ -7,7 +7,14 @@
                 <h1>
                     <?=$h1;?>
                 </h1>
-                <?=$biblioteks; ?>
+                <ul>
+                    @foreach($biblioteks as $biblioteka)
+                        <li>
+                            <a href="{{route('biblioteka/bibliotekaid' ,$biblioteka['bibliotekaid'])}}">{{$biblioteka['bibliotekatitle']}}</a>
+                            На хранении {{$biblioteka['countBooks']}} книг
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
 

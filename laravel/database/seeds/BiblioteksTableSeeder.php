@@ -18,7 +18,7 @@ class BiblioteksTableSeeder extends Seeder
         foreach($this->biblioteks as $biblioteka) {
 
             DB::table('biblioteks')->insert([
-                'bibliotekaid'     => $biblioteka[0],
+                'id'               => $biblioteka[0],
                 'bibliotekatitle'  => $biblioteka[1],
                 'bibliotekaadress' => $biblioteka[2],
             ]);

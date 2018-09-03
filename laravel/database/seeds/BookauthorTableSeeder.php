@@ -21,14 +21,14 @@ class BookauthorTableSeeder extends Seeder
 
     public function run()
     {
-        DB::table('bookauthor')->delete();
+        DB::table('book_author')->delete();
 
         foreach($this->bookauthors as $bookauthor) {
 
-            DB::table('bookauthor')->insert([
-                'id'       => $bookauthor[0],
-                'bookid'   => $bookauthor[1],
-                'authorid' => $bookauthor[2],
+            DB::table('book_author')->insert([
+                'id'        => $bookauthor[0],
+                'book_id'   => $bookauthor[1],
+                'author_id' => $bookauthor[2],
             ]);
         }
     }

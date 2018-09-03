@@ -13,16 +13,16 @@ class CreateTableBibliotekaBook extends Migration
      */
     public function up()
     {
-        Schema::create('bibliotekabook', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('bibliotekaid');
-            $table->integer('bookid');
+        Schema::create('biblioteka_book', function (Blueprint $table) {
+            $table->increments('id')->unsigned();
+            $table->integer('biblioteka_id')->unsigned();
+            $table->integer('book_id')->unsigned();
         });
     }
 
 
     public function down()
     {
-        Schema::dropIfExists('bibliotekabook');
+        Schema::dropIfExists('biblioteka_book');
     }
 }

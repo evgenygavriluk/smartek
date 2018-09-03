@@ -17,7 +17,7 @@
                 <p>Вы можете взять эту книгу в наших филиалах:</p>
                     <ul>
                         @foreach($bibliotecs as $biblioteka)
-                            <li><a href="biblioteka.php?bibliotekaid={{$biblioteka['bibliotekaid']}}">{{$biblioteka['bibliotekatitle']}} {{$biblioteka['bibliotekaadress']}}</a></li>
+                            <li><a href="{{route('biblioteka/bibliotekaid' ,$biblioteka['bibliotekaid'])}}">{{$biblioteka['bibliotekatitle']}} {{$biblioteka['bibliotekaadress']}}</a></li>
                         @endforeach
                     </ul>
             </div>
