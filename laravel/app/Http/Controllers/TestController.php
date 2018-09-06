@@ -14,17 +14,44 @@ class TestController extends Controller
 {
     public function index(){
 
-        dump(Biblioteks::getContainBooks(1, 1, 5, 0, 0));
+        // Получаем список всех книг у автора
+        $author = Author::find(5);
+        echo $author->authorname;
 
-/*
-        $res = Book::whereHas('authors', function ($query) {
-            $query->where('authorname', 'like', '%Гайдар%');
-        })->get();;
-
-        foreach ($res as $b) {
+        $books = $author->books;
+        foreach ($books as $b) {
             echo $b->bookname.'<br />';
-            dump($b->authors);
         }
-*/
+
+        echo $books->count();
+
+
+        echo Author::find(5)->books->count();
+
+        // Получаем список всех авторов у книги
+        $book = Book::find(2);
+        echo $book->bookname;
+
+        $authors = $book->authors;
+        foreach ($authors as $a) {
+            echo $a->authorname.'<br />';
+        }
+
+        // Получаем список всех книг в библиотеке
+        $biblioteka = Biblioteka::find(3);
+        echo $biblioteka->bibliotekatitle;
+
+        $books = $biblioteka->books;
+        foreach ($books as $book){
+            echo $book->bookname.'<br />';
+        }
+
+        // Все книги с темами
+        $books = Book::all();
+        foreach($books as $book){
+            dump($book->thema);
+        }
+
+
     }
 }

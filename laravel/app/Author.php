@@ -10,7 +10,7 @@ class Author extends Model
     protected $table = 'authors';
 
     public function books(){
-        return $this->belongsToMany('App\Book');
+        return $this->belongsToMany('App\Book','book_author');
     }
 
 }

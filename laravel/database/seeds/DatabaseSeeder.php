@@ -16,13 +16,15 @@ class DatabaseSeeder extends Seeder
 
         $this->call('BiblioteksTableSeeder');
 
+        $this->call('ThemesTableSeeder');
+
         $this->call('BooksTableSeeder');
 
         $this->call('BookuserTableSeeder');
 
         $this->call('CommentsTableSeeder');
 
-        $this->call('ThemesTableSeeder');
+
 
 
 

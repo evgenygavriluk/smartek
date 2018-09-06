@@ -26,7 +26,7 @@
                     @foreach($authors as $author)
                         <tr>
                             <td>
-                                <a href="{{route('author/authorid', $author['authorid'])}}">{{$author['authorname']}}</a>
+                                <a href="{{route('author/authorid', $author['id'])}}">{{$author['authorname']}}</a>
                             </td>
                         </tr>
                     @endforeach

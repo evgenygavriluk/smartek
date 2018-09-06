@@ -73,9 +73,13 @@
       <path value="$PROJECT_DIR$/laravel/vendor/phar-io/version" />
       <path value="$PROJECT_DIR$/laravel/vendor/psr/simple-cache" />
       <path value="$PROJECT_DIR$/laravel/vendor/erusev/parsedown" />
+      <path value="$PROJECT_DIR$/laravel/vendor/mtdowling/cron-expression" />
+      <path value="$PROJECT_DIR$/laravel/vendor/symfony/polyfill-php70" />
+      <path value="$PROJECT_DIR$/laravel/vendor/symfony/thanks" />
+      <path value="$PROJECT_DIR$/laravel/vendor/phpunit/phpunit-mock-objects" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
+  <component name="PhpProjectSharedConfiguration" php_language_level="7" />
   <component name="PhpUnit">
     <phpunit_settings>
       <PhpUnitSettings load_method="CUSTOM_LOADER" custom_loader_path="$PROJECT_DIR$/laravel/vendor/autoload.php" />

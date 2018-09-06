@@ -17,7 +17,7 @@
                 <p>Вы можете взять эту книгу в наших филиалах:</p>
                     <ul>
                         @foreach($bibliotecs as $biblioteka)
-                            <li><a href="{{route('biblioteka/bibliotekaid' ,$biblioteka['bibliotekaid'])}}">{{$biblioteka['bibliotekatitle']}} {{$biblioteka['bibliotekaadress']}}</a></li>
+                            <li><a href="{{route('biblioteka/bibliotekaid' ,$biblioteka->id)}}">{{$biblioteka->bibliotekatitle}} {{$biblioteka->bibliotekaadress}}</a></li>
                         @endforeach
                     </ul>
             </div>
@@ -57,7 +57,13 @@
         </div>
         <div class="row justify-content-center">
             <div id="comments" class="col-lg-6">
-                <?=$comments;?>
+                @foreach($comments as $elements)
+                    <div class="commentary alert alert-info">
+                        <p>
+                            <strong>{{$elements->commentatorname}}</strong> поставил книге {{$elements->commentraiting}} баллов</p>
+                            <em>{{$elements->commenttext}}</em>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

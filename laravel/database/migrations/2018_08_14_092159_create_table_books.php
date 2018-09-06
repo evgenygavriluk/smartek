@@ -15,7 +15,7 @@ class CreateTableBooks extends Migration
             $table->string('bookname', 100);
             $table->string('bookpublicyear', 100);
             $table->integer('bookpages');
-            $table->integer('bookthema');
+            $table->integer('bookthema')->unsigned();
             $table->string('bookdescription', 1000)->nullable();
             $table->string('bookimage', 20);
             $table->integer('commentscnt')->unsigned()->nullable();

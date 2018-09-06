@@ -63,11 +63,11 @@
                     <div class="card-deck">
                         @foreach($lastFiveComments as $comment)
                             <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                                <div class="card-header">{{$comment['commentatorname']}} прокомментировал книгу
-                                    <a href="{{route('book/bookid', $comment['bookid'])}}">{{$comment['bookname']}}</a>
+                                <div class="card-header">{{$comment->commentatorname}} прокомментировал книгу
+                                    <a href="{{route('book/bookid', $comment->id)}}">{{$comment->bookname}}</a>
                                 </div><div class="card-body">
-                                    <p class="card-text">{{$comment['commenttext']}}</p>
-                                    <small>Поставил баллов: {{$comment['commentraiting']}}</small>
+                                    <p class="card-text">{{$comment->commenttext}}</p>
+                                    <small>Поставил баллов: {{$comment->commentraiting}}</small>
                                 </div>
                             </div>
                         @endforeach

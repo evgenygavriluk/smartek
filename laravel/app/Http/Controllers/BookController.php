@@ -52,7 +52,7 @@ class BookController extends Controller
         $description = $thisBook['bookdescription'];
         $authors = Books::getBookAuthors($bookid);
         $bibliotecs = Books::getBookBiblioteks($bookid);
-        $comments = Comments::showBookComments($bookid);
+        $comments = Comments::getBookComments($bookid);
         return view('book-element', ['h1' => $h1,
                                      'bookImage' => $bookImage,
                                      'description' => $description,

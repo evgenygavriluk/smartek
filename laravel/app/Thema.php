@@ -2,9 +2,10 @@
 
 namespace App;
 
+use App\Book;
 use Illuminate\Database\Eloquent\Model;
 
-class Index extends Model
+class Thema extends Model
 {
-    //
+
 }

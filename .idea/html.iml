@@ -23,6 +23,7 @@
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/league/flysystem" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/mockery/mockery" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/monolog/monolog" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/mtdowling/cron-expression" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/myclabs/deep-copy" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/nesbot/carbon" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/nikic/php-parser" />
@@ -40,6 +41,7 @@
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/phpunit/php-timer" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/phpunit/php-token-stream" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/phpunit/phpunit" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/phpunit/phpunit-mock-objects" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/psr/container" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/psr/log" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/psr/simple-cache" />
@@ -66,9 +68,11 @@
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/http-kernel" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/polyfill-ctype" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/polyfill-php70" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/polyfill-php72" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/process" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/routing" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/thanks" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/translation" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/symfony/var-dumper" />
       <excludeFolder url="file://$MODULE_DIR$/laravel/vendor/theseer/tokenizer" />

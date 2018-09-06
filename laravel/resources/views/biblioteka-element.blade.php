@@ -13,10 +13,10 @@
                         <option value="{{route('biblPageAuthor/authorid',['bibliotekaid'=>$id, 'authorid'=>0, 'pageid'=>$currentPage ])}}">Все авторы</option>
 
                         @foreach($authors as $a)
-                            @if($a['authorid']==$authorid)
-                                <option value="{{route('biblPageAuthor/authorid',['bibliotekaid'=>$id, 'authorid'=>$a['authorid'], 'pageid'=>$currentPage ])}}" selected>{{$a['authorname']}}</option>
+                            @if($a->id==$authorid)
+                                <option value="{{route('biblPageAuthor/authorid',['bibliotekaid'=>$id, 'authorid'=>$a->id, 'pageid'=>$currentPage ])}}" selected>{{$a->authorname}}</option>
                             @else
-                                <option value="{{route('biblPageAuthor/authorid',['bibliotekaid'=>$id, 'authorid'=>$a['authorid'], 'pageid'=>$currentPage ])}}">{{$a['authorname']}}</option>
+                                <option value="{{route('biblPageAuthor/authorid',['bibliotekaid'=>$id, 'authorid'=>$a->id, 'pageid'=>$currentPage ])}}">{{$a->authorname}}</option>
                             @endif
                         @endforeach
                     </select>

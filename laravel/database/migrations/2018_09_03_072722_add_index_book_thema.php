@@ -13,7 +13,9 @@ class AddIndexBookThema extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('books', function (Blueprint $table) {
+            $table->foreign('bookthema')->references('id')->on('themas');
+         });
     }
 
     /**
