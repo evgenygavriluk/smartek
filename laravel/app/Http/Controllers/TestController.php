@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 class TestController extends Controller
 {
     public function index(){
-
+/*
         // Получаем список всех книг у автора
         $author = Author::find(5);
         echo $author->authorname;
@@ -50,8 +50,14 @@ class TestController extends Controller
         $books = Book::all();
         foreach($books as $book){
             dump($book->thema);
+        }*/
+
+        dump($books = Author::find(5)->books);
+        foreach($books as $book) {
+            $biblioteks = $book->biblioteks;
+            foreach($biblioteks as $biblioteka){
+                dump($biblioteka);
+            }
         }
-
-
     }
 }

@@ -85,11 +85,7 @@ class Books
 
     // ******* Возвращает список библиотек, в которых есть книга
     public static function getBookBiblioteks($bookId){
-        $result = DB::table('biblioteks')
-            ->join('biblioteka_book','biblioteks.id','=','biblioteka_book.biblioteka_id')
-            ->where('biblioteka_book.book_id','=',$bookId)
-            ->select('biblioteks.id','biblioteks.bibliotekatitle','biblioteks.bibliotekaadress')
-            ->get();
+        $result = Book::find($bookId)->biblioteks;
         return $result;
     }
 }

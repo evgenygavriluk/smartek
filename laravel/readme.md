@@ -16,7 +16,7 @@
 ## Окружение
 PHP 7.2<br />
 Nginx 1.14.0 (Ubuntu)<br />
-Laravel 5
+Laravel 5.7
 
 ##База данных
 
